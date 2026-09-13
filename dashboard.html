@@ -42,13 +42,13 @@
           <!-- DROPDOWN DROPDOWN DROPDOWN DROPDOWN DROPDOWN -->
           <div class="relative group py-2 text-sm">
             <p class="text-slate-600">USER</p>
-            <button class="cursor-pointer hover:text-slate-500">
+            <button class="peer cursor-pointer hover:text-slate-500">
               Equipe Ferramentaria<i
                 class="fa solid fa-chevron-down ml-1 fa-xs"
               ></i>
             </button>
             <div
-              class="bg-[#1D242F] p-2 border border-slate-200 rounded-lg w-40 shadow-lg absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+              class="peer-focus:opacity-100 peer-focus:visible transition-all bg-[#1D242F] p-2 border border-slate-200 rounded-lg w-40 shadow-lg absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible"
             >
               <a href="#" class="block py-1 hover:text-slate-500">Perfil</a>
               <a href="index.html" class="block py-1 hover:text-slate-500"
@@ -231,12 +231,12 @@
             <tr
               class="bg-slate-50 border-b border-slate-200 text-slate-500 text-sm font-semibold"
             >
-              <th class="px-3 py-3 font-semibold">ID</th>
+              <th class="px-3 py-3 font-semibold hidden">ID</th>
               <th class="py-3 font-semibold hidden sm:table-cell">Data</th>
               <th class="py-3 font-semibold hidden sm:table-cell">
                 Solicitante
               </th>
-              <th class="py-3 font-semibold">Tipo de Serviço</th>
+              <th class="py-3 px-3 font-semibold">Tipo de Serviço</th>
               <th class="py-3 font-semibold">Prazo</th>
               <th class="py-3 font-semibold">Status</th>
             </tr>
@@ -248,16 +248,18 @@
               <td class="font-semibold text-black hidden sm:table-cell">
                 Engenharia - Jacto Agrícola
               </td>
-              <td class="font-semibold text-black">Molde de Injeção</td>
-              <td class="text-slate-500">18/08/2026</td>
-              <td class="">
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Molde de Injeção
+              </td>
+              <td class="text-slate-500 w-24 sm:w-auto">18/08/2026</td>
+              <td class="p-2">
                 <div
                   class="bg-[#a7affc] text-[#423adf] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
                 >
                   Em Andamento
                 </div>
               </td>
-              <td>
+              <td class="p-2">
                 <a
                   ><i
                     class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
@@ -280,16 +282,18 @@
               <td class="font-semibold text-black hidden sm:table-cell">
                 Engenharia - Jacto Agrícola
               </td>
-              <td class="font-semibold text-black">Molde de Injeção</td>
-              <td class="text-slate-500">18/08/2026</td>
-              <td class="">
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Molde de Injeção
+              </td>
+              <td class="text-slate-500 w-24 sm:w-auto">18/08/2026</td>
+              <td class="p-2">
                 <div
                   class="bg-[#a7affc] text-[#423adf] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
                 >
                   Em Andamento
                 </div>
               </td>
-              <td>
+              <td class="p-2">
                 <a
                   ><i
                     class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
@@ -312,8 +316,10 @@
               <td class="font-semibold text-black hidden sm:table-cell">
                 Engenharia - Jacto Agrícola
               </td>
-              <td class="font-semibold text-black">Molde de Injeção</td>
-              <td class="text-slate-500">18/08/2026</td>
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Molde de Injeção
+              </td>
+              <td class="text-slate-500 w-24 sm:w-auto">18/08/2026</td>
               <td class="">
                 <div
                   class="bg-[#9afac3] text-[#328C59] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
@@ -321,7 +327,7 @@
                   Concluída
                 </div>
               </td>
-              <td>
+              <td class="p-2">
                 <a
                   ><i
                     class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
@@ -344,8 +350,10 @@
               <td class="font-semibold text-black hidden sm:table-cell">
                 Engenharia - Jacto Agrícola
               </td>
-              <td class="font-semibold text-black">Molde de Injeção</td>
-              <td class="text-slate-500">18/08/2026</td>
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Molde de Injeção
+              </td>
+              <td class="text-slate-500 w-24 sm:w-auto">18/08/2026</td>
               <td class="">
                 <div
                   class="bg-[#9afac3] text-[#328C59] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
@@ -353,7 +361,7 @@
                   Concluída
                 </div>
               </td>
-              <td>
+              <td class="p-2">
                 <a
                   ><i
                     class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
