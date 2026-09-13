@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Projeto intergrador desenvolvido para o eixo de computação da Univesp.Desenvolvimento de Sistema Web para Gestão de Solicitações e Pedidos Industriais"
+    />
+    <meta
+      name="author"
+      content="Alexandre Tetsuo Eto, Amanda Vitória Rosa, Bruna Yukari Kuwabara Miyamoto,Gicélio Alves Correia,Ingrid Aparecida Aquino Soares e Ygor Martins Godoi"
+    />
+    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-slate-100 min-h-screen">
+    <header class="bg-[#1D242F] text-white p-2">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="bg-[#E19047] p-0.5 rounded-sm m-2">
+            <i class="fa-solid fa-gear" style="color: rgb(30, 48, 80)"></i>
+          </div>
+          <p class="font-bold">Jacto</p>
+          <p class="text-[#E19047] font-bold">Flow</p>
+        </div>
+        <nav class="flex gap-1">
+          <div class="pb-3">
+            <i
+              class="fa-regular fa-circle-user fa-xl pt-6 m-2"
+              style="color: #ffffff"
+            ></i>
+            <a
+              href="login.html"
+              class="cursor-pointer hover:text-[#E19047] font-bold"
+              >Login</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+      <h1 class="font-bold text-[#1D242F] text-2xl">Visão Geral</h1>
+      <!-- CARDS CARDS CARDS -->
+      <div class="grid grid-1 lg:grid-cols-4 gap-6 my-10">
+        <article class="bg-[#F29949] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">PENDENTES</p>
+            <div>
+              <i class="fa-regular fa-clock" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+
+        <article class="bg-[#369AD9] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">EM ANÁLISE</p>
+            <div>
+              <i
+                class="fa-solid fa-magnifying-glass"
+                style="color: #ffffff"
+              ></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+
+        <article class="bg-[#4F46E4] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">EM ATENDIMENTO</p>
+            <div>
+              <i class="fa-solid fa-gear" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+
+        <article class="bg-[#328C59] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">CONCLUÍDAS</p>
+            <div>
+              <i class="fa-regular fa-circle-check" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+      </div>
+      <!-- FIM DOS CASDS FIM DOS CARDS -->
+    </main>
+    <footer>
+      <div class=""></div>
+    </footer>
+  </body>
+  <script src="src/app.js"></script>
+</html>

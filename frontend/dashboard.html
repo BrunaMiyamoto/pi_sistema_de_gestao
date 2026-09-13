@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Projeto intergrador desenvolvido para o eixo de computação da Univesp.Desenvolvimento de Sistema Web para Gestão de Solicitações e Pedidos Industriais"
+    />
+    <meta
+      name="author"
+      content="Alexandre Tetsuo Eto, Amanda Vitória Rosa, Bruna Yukari Kuwabara Miyamoto,Gicélio Alves Correia,Ingrid Aparecida Aquino Soares e Ygor Martins Godoi"
+    />
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-slate-100 min-h-screen">
+    <header class="bg-[#1D242F] text-white p-2">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="bg-[#E19047] p-0.5 rounded-sm m-2">
+            <i class="fa-solid fa-gear" style="color: rgb(30, 48, 80)"></i>
+          </div>
+          <p class="font-bold">Jacto</p>
+          <p class="text-[#E19047] font-bold">Flow</p>
+        </div>
+        <nav class="flex gap-1">
+          <div>
+            <i
+              class="fa-regular fa-circle-user fa-xl pt-6 m-2"
+              style="color: #ffffff"
+            ></i>
+          </div>
+
+          <!-- DROPDOWN DROPDOWN DROPDOWN DROPDOWN DROPDOWN -->
+          <div class="relative group py-2 text-sm">
+            <p class="text-slate-600">USER</p>
+            <button class="cursor-pointer hover:text-slate-500">
+              Equipe Ferramentaria<i
+                class="fa solid fa-chevron-down ml-1 fa-xs"
+              ></i>
+            </button>
+            <div
+              class="bg-[#1D242F] p-2 border border-slate-200 rounded-lg w-40 shadow-lg absolute left-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+            >
+              <a href="#" class="block py-1 hover:text-slate-500">Perfil</a>
+              <a href="index.html" class="block py-1 hover:text-slate-500"
+                >Sair</a
+              >
+            </div>
+          </div>
+
+          <!-- FIM DROPDOWN FIM DROPDOWN FIM DROPDOWN FIM DROPDOWN -->
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex justify-between items-center">
+        <h1 class="font-bold text-[#1D242F] text-2xl">Dashboard</h1>
+        <button
+          id="abreModal"
+          class="bg-[#F29949] text-[#1D242F] text-sm font-bold py-1.5 px-4 rounded-xl cursor-pointer"
+        >
+          + Nova Solicitação
+        </button>
+
+        <!-- MODAL MODAL MODAL MODAL -->
+        <div
+          id="modal"
+          class="fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm p-4 hidden"
+        >
+          <div
+            class="rounded-xl shadow-2xl w-full max-w-xl overflow-hidden flex flex-col mx-auto"
+          >
+            <div class="bg-[#1D242F] text-white flex justify-between px-4 py-1">
+              <div class="flex items-center">
+                <div class="bg-[#E19047] p-0.5 rounded-sm m-2">
+                  <i
+                    class="fa-solid fa-gear"
+                    style="color: rgb(30, 48, 80)"
+                  ></i>
+                </div>
+                <p class="font-bold">Jacto</p>
+                <p class="text-[#E19047] font-bold">Flow</p>
+              </div>
+              <span id="fechaModal" class="py-3 cursor-pointer"
+                ><i class="fa-solid fa-circle-xmark" style="color: #ffffff"></i
+              ></span>
+            </div>
+            <div class="shadow p-6 bg-white">
+              <h1 class="font-bold text-xl py-4">+ Nova Solicitação Técnica</h1>
+
+              <form>
+                <div class="flex flex-col">
+                  <label class="font-semibold">Tipo de Serviço</label>
+                  <select
+                    name="tipoServico"
+                    class="border border-slate-300 rounded-sm p-1 my-2"
+                  >
+                    <option>Selecione..</option>
+                    <option>Molde dde Injeção</option>
+                  </select>
+                </div>
+
+                <div class="flex flex-col">
+                  <label class="font-semibold">Prazo Desejado</label>
+                  <input
+                    type="date"
+                    name="prazo"
+                    id="prazo"
+                    class="border border-slate-300 rounded-sm p-1 my-2"
+                  />
+                </div>
+
+                <div class="flex flex-col">
+                  <label class="font-semibold">Descrição</label>
+                  <textarea
+                    name="descricao"
+                    id="descricao"
+                    class="border border-slate-300 rounded-sm p-1 my-2"
+                    rows="5"
+                    cols="50"
+                    placeholder="Descrição"
+                  ></textarea>
+                </div>
+
+                <div class="flex flex-col">
+                  <label class="font-semibold"
+                    >Links dos Arquivos Técnicos</label
+                  >
+                  <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    class="border border-slate-300 rounded-sm p-1 my-2"
+                  />
+                </div>
+
+                <div id="botao">
+                  <button
+                    type="submit"
+                    class="bg-[#F29949] font-bold text-center w-full rounded-lg py-1 my-2 cursor-pointer"
+                  >
+                    Registrar Demanda
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- FIM MODAL FIM MODAL FIM MODAL FIM MODAL -->
+      </div>
+      <!-- CARDS CARDS CARDS -->
+      <div class="grid grid-1 lg:grid-cols-4 gap-6 my-10">
+        <article class="bg-[#F29949] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">PENDENTES</p>
+            <div>
+              <i class="fa-regular fa-clock" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+
+        <article class="bg-[#369AD9] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">EM ANÁLISE</p>
+            <div>
+              <i
+                class="fa-solid fa-magnifying-glass"
+                style="color: #ffffff"
+              ></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+
+        <article class="bg-[#4F46E4] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">EM ATENDIMENTO</p>
+            <div>
+              <i class="fa-solid fa-gear" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+
+        <article class="bg-[#328C59] rounded-xl shadow-sm text-white px-4 py-5">
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-xs font-semibold">CONCLUÍDAS</p>
+            <div>
+              <i class="fa-regular fa-circle-check" style="color: #ffffff"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold">1</div>
+        </article>
+      </div>
+      <!-- FIM DOS CASDS FIM DOS CARDS -->
+
+      <!-- BARRA DE PESQUISA -->
+      <div class="bg-white p-2 rounded-xl shadow">
+        <div class="flex gap-2 items-center">
+          <i class="fa-solid fa-magnifying-glass" style="color: #68768a"></i>
+
+          <input
+            type="text"
+            name="pesquisar"
+            id="pesquisar"
+            placeholder="Buscar solicitação po ID,solicitante ou tipo..."
+            class="w-full"
+          />
+        </div>
+      </div>
+      <!-- FIM DA BARRA DE PESQUISA -->
+
+      <!-- TABELA TABELA TABELA TABELA  -->
+
+      <div
+        class="bg-white shadow-sm border border-slate-200 rounded-xl overflow-hidden mt-9"
+      >
+        <table class="w-full text-left border-collapse">
+          <thead class="">
+            <tr
+              class="bg-slate-50 border-b border-slate-200 text-slate-500 text-sm font-semibold"
+            >
+              <th class="px-3 py-3 font-semibold">ID</th>
+              <th class="py-3 font-semibold hidden sm:table-cell">Data</th>
+              <th class="py-3 font-semibold hidden sm:table-cell">
+                Solicitante
+              </th>
+              <th class="py-3 font-semibold">Tipo de Serviço</th>
+              <th class="py-3 font-semibold">Prazo</th>
+              <th class="py-3 font-semibold">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="shadow">
+              <td class="font-semibold text-black px-3">#001</td>
+              <td class="text-slate-500 hidden sm:table-cell">18/08/2026</td>
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Engenharia - Jacto Agrícola
+              </td>
+              <td class="font-semibold text-black">Molde de Injeção</td>
+              <td class="text-slate-500">18/08/2026</td>
+              <td class="">
+                <div
+                  class="bg-[#a7affc] text-[#423adf] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
+                >
+                  Em Andamento
+                </div>
+              </td>
+              <td>
+                <a
+                  ><i
+                    class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+                <a
+                  ><i
+                    onclick="return confirm('Deseja excluir o registro?');"
+                    class="fa-solid fa-trash-can cursor-pointer fa-[20px]"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+              </td>
+            </tr>
+
+            <tr class="shadow">
+              <td class="font-semibold text-black px-3">#002</td>
+              <td class="text-slate-500 hidden sm:table-cell">18/08/2026</td>
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Engenharia - Jacto Agrícola
+              </td>
+              <td class="font-semibold text-black">Molde de Injeção</td>
+              <td class="text-slate-500">18/08/2026</td>
+              <td class="">
+                <div
+                  class="bg-[#a7affc] text-[#423adf] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
+                >
+                  Em Andamento
+                </div>
+              </td>
+              <td>
+                <a
+                  ><i
+                    class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+                <a
+                  ><i
+                    onclick="return confirm('Deseja excluir o registro?');"
+                    class="fa-solid fa-trash-can cursor-pointer fa-[20px]"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+              </td>
+            </tr>
+
+            <tr class="shadow">
+              <td class="font-semibold text-black px-3">#003</td>
+              <td class="text-slate-500 hidden sm:table-cell">18/08/2026</td>
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Engenharia - Jacto Agrícola
+              </td>
+              <td class="font-semibold text-black">Molde de Injeção</td>
+              <td class="text-slate-500">18/08/2026</td>
+              <td class="">
+                <div
+                  class="bg-[#9afac3] text-[#328C59] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
+                >
+                  Concluída
+                </div>
+              </td>
+              <td>
+                <a
+                  ><i
+                    class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+                <a
+                  ><i
+                    onclick="return confirm('Deseja excluir o registro?');"
+                    class="fa-solid fa-trash-can cursor-pointer fa-[20px]"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+              </td>
+            </tr>
+
+            <tr class="shadow">
+              <td class="font-semibold text-black px-3">#004</td>
+              <td class="text-slate-500 hidden sm:table-cell">18/08/2026</td>
+              <td class="font-semibold text-black hidden sm:table-cell">
+                Engenharia - Jacto Agrícola
+              </td>
+              <td class="font-semibold text-black">Molde de Injeção</td>
+              <td class="text-slate-500">18/08/2026</td>
+              <td class="">
+                <div
+                  class="bg-[#9afac3] text-[#328C59] text-sm font-bold rounded-2xl my-2 p-1 max-w-32 text-center"
+                >
+                  Concluída
+                </div>
+              </td>
+              <td>
+                <a
+                  ><i
+                    class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] abreModalServicos"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+                <a
+                  ><i
+                    onclick="return confirm('Deseja excluir o registro?');"
+                    class="fa-solid fa-trash-can cursor-pointer fa-[20px]"
+                    style="color: #1d242f"
+                  ></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FIM TABELA FIM TABELA FIM TABELA FIM TABELA  -->
+
+      <!-- MODAL SERVIÇOS  MODAL SERVIÇOS  MODAL SERVIÇOS MODAL SERVIÇOS  -->
+      <div
+        id="modalServicos"
+        class="fixed inset-0 z-50 items-center justify-center bg-black/50 backdrop-blur-sm p-4 hidden"
+      >
+        <div
+          class="rounded-xl shadow-2xl w-full max-w-xl overflow-hidden flex flex-col mx-auto"
+        >
+          <div class="bg-[#1D242F] text-white flex justify-between px-4 py-1">
+            <div class="flex items-center">
+              <div class="bg-[#E19047] p-0.5 rounded-sm m-2">
+                <i class="fa-solid fa-gear" style="color: rgb(30, 48, 80)"></i>
+              </div>
+              <p class="font-bold">Jacto</p>
+              <p class="text-[#E19047] font-bold">Flow</p>
+            </div>
+            <span id="fechaModalServicos" class="py-3 cursor-pointer"
+              ><i class="fa-solid fa-circle-xmark" style="color: #ffffff"></i
+            ></span>
+          </div>
+          <div class="shadow p-6 bg-white">
+            <h1 class="font-bold text-xl py-4">#001| Molde de Injeção</h1>
+
+            <div class="flex justify-between">
+              <div class="font-semibold text-xs">
+                <h5 class="text-slate-500">SOLICITANTE</h5>
+                <p class="text-sm">Engenharia - Jacto Agrícola</p>
+              </div>
+              <div class="font-semibold text-xs">
+                <h5 class="text-slate-500">ABERTURA</h5>
+                <p class="text-sm">18/08/2026</p>
+              </div>
+              <div class="font-semibold text-xs">
+                <h5 class="text-slate-500">ATENDIDO</h5>
+                <p class="text-sm">18/08/2026</p>
+              </div>
+            </div>
+
+            <form class="m-3">
+              <div class="flex flex-col">
+                <h3 class="font-bold py-3">Interativo atalho técnico</h3>
+                <label class="font-semibold">Status</label>
+                <select
+                  name="status"
+                  class="border border-slate-300 rounded-sm p-1 my-2 focus:outline-none focus:ring-2 focus:ring-[#423adf]"
+                >
+                  <option value="">Selecione..</option>
+                  <option value="andamento">Em Andamento</option>
+                  <option value="aguardando">Aguardando</option>
+                  <option value="concluida">Concluída</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col">
+                <label class="font-semibold">Feedback</label>
+                <textarea
+                  name="feedback"
+                  id="feedback"
+                  class="border border-slate-300 rounded-sm p-1 my-2"
+                  rows="5"
+                  cols="50"
+                ></textarea>
+              </div>
+
+              <div id="botao">
+                <button
+                  type="submit"
+                  class="bg-[#423adf] text-white font-bold text-center w-full rounded-lg py-1 my-2 cursor-pointer"
+                >
+                  Salvar Alterações
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- FIM MODAL SERVIÇOS FIM MODAL SERVIÇOS FIM MODAL SERVIÇOS -->
+    </main>
+    <footer>
+      <div class="bg-[#1D242F] p-5"></div>
+    </footer>
+  </body>
+  <script src="src/app.js"></script>
+</html>
