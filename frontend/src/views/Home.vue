@@ -12,11 +12,11 @@ const stats = reactive({
 </script>
 
 <template>
-  <div class="bg-slate-100 min-h-screen">
+  <div class="bg-surface-page dark:bg-surface-authBg min-h-screen">
     <AppHeader />
 
     <main class="max-w-7xl mx-auto px-4 py-8">
-      <h1 class="font-bold text-[#1D242F] text-2xl">Visão Geral</h1>
+      <h1 class="font-bold text-surface-dark dark:text-white text-2xl">Visão Geral</h1>
       <StatusCards :stats="stats" />
     </main>
 

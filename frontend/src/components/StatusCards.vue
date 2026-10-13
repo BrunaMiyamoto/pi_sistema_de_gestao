@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div class="grid grid-1 lg:grid-cols-4 gap-6 my-10">
-    <article class="bg-[#F29949] rounded-xl shadow-sm text-white px-4 py-5">
+    <article class="bg-status-pending rounded-xl shadow-sm text-white px-4 py-5">
       <div class="flex justify-between items-center pb-3">
         <p class="text-xs font-semibold">PENDENTES</p>
         <div>
@@ -19,7 +19,7 @@ defineProps({
       <div class="text-3xl font-bold">{{ stats.pendentes }}</div>
     </article>
 
-    <article class="bg-[#369AD9] rounded-xl shadow-sm text-white px-4 py-5">
+    <article class="bg-status-analysisBlue rounded-xl shadow-sm text-white px-4 py-5">
       <div class="flex justify-between items-center pb-3">
         <p class="text-xs font-semibold">EM ANÁLISE</p>
         <div>
@@ -29,7 +29,7 @@ defineProps({
       <div class="text-3xl font-bold">{{ stats.emAnalise }}</div>
     </article>
 
-    <article class="bg-[#4F46E4] rounded-xl shadow-sm text-white px-4 py-5">
+    <article class="bg-status-inProgress rounded-xl shadow-sm text-white px-4 py-5">
       <div class="flex justify-between items-center pb-3">
         <p class="text-xs font-semibold">EM ATENDIMENTO</p>
         <div>
@@ -39,7 +39,7 @@ defineProps({
       <div class="text-3xl font-bold">{{ stats.emAtendimento }}</div>
     </article>
 
-    <article class="bg-[#328C59] rounded-xl shadow-sm text-white px-4 py-5">
+    <article class="bg-brand-mint rounded-xl shadow-sm text-white px-4 py-5">
       <div class="flex justify-between items-center pb-3">
         <p class="text-xs font-semibold">CONCLUÍDAS</p>
         <div>

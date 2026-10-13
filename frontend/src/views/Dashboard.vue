@@ -4,6 +4,7 @@ import AppHeader from "../components/AppHeader.vue";
 import StatusCards from "../components/StatusCards.vue";
 import NovaSolicitacaoModal from "../components/NovaSolicitacaoModal.vue";
 import ServicoModal from "../components/ServicoModal.vue";
+import ExcluirSolicitacaoModal from "../components/ExcluirSolicitacaoModal.vue";
 
 const stats = reactive({
   pendentes: 1,
@@ -66,9 +67,9 @@ const statusLabel = {
 };
 
 const statusClasses = {
-  andamento: "bg-[#a7affc] text-[#423adf]",
-  aguardando: "bg-[#fcd9a7] text-[#F29949]",
-  concluida: "bg-[#9afac3] text-[#328C59]",
+  andamento: "bg-status-indigoBg text-status-indigoText",
+  aguardando: "bg-status-inProgressBg text-status-inProgress",
+  concluida: "bg-status-doneBg text-status-doneText",
 };
 
 const pesquisa = ref("");
@@ -127,22 +128,35 @@ function salvarServico(dadosForm) {
   solicitacaoSelecionada.value.feedback = dadosForm.feedback;
 }
 
+const excluirModalAberto = ref(false);
+const solicitacaoParaExcluir = ref(null);
+
 function excluirSolicitacao(solicitacao) {
-  if (!confirm("Deseja excluir o registro?")) return;
-  const index = solicitacoes.indexOf(solicitacao);
+  solicitacaoParaExcluir.value = solicitacao;
+  excluirModalAberto.value = true;
+}
+
+function fecharExclusao() {
+  excluirModalAberto.value = false;
+  solicitacaoParaExcluir.value = null;
+}
+
+function confirmarExclusao() {
+  const index = solicitacoes.indexOf(solicitacaoParaExcluir.value);
   if (index !== -1) solicitacoes.splice(index, 1);
+  fecharExclusao();
 }
 </script>
 
 <template>
-  <div class="bg-slate-100 min-h-screen">
+  <div class="bg-surface-page dark:bg-surface-authBg min-h-screen">
     <AppHeader logged-in />
 
     <main class="max-w-7xl mx-auto px-4 py-8">
       <div class="flex justify-between items-center">
-        <h1 class="font-bold text-[#1D242F] text-2xl">Dashboard</h1>
+        <h1 class="font-bold text-surface-dark dark:text-white text-2xl">Dashboard</h1>
         <button
-          class="bg-[#F29949] text-[#1D242F] text-sm font-bold py-1.5 px-4 rounded-xl cursor-pointer"
+          class="bg-brand-mint hover:bg-brand-turquoise text-white text-sm font-bold py-1.5 px-4 rounded-xl cursor-pointer"
           @click="abrirNovaSolicitacao"
         >
           + Nova Solicitação
@@ -152,9 +166,9 @@ function excluirSolicitacao(solicitacao) {
       <StatusCards :stats="stats" />
 
       <!-- BARRA DE PESQUISA -->
-      <div class="bg-white p-2 rounded-xl shadow">
+      <div class="bg-white dark:bg-surface-dark p-2 rounded-xl shadow">
         <div class="flex gap-2 items-center">
-          <i class="fa-solid fa-magnifying-glass" style="color: #68768a"></i>
+          <i class="fa-solid fa-magnifying-glass text-ink-secondary"></i>
 
           <input
             v-model="pesquisa"
@@ -162,7 +176,7 @@ function excluirSolicitacao(solicitacao) {
             name="pesquisar"
             id="pesquisar"
             placeholder="Buscar solicitação po ID,solicitante ou tipo..."
-            class="w-full"
+            class="w-full bg-transparent dark:text-white dark:placeholder:text-ink-mutedDark"
           />
         </div>
       </div>
@@ -170,12 +184,12 @@ function excluirSolicitacao(solicitacao) {
 
       <!-- TABELA TABELA TABELA TABELA  -->
       <div
-        class="bg-white shadow-sm border border-slate-200 rounded-xl overflow-hidden mt-9"
+        class="bg-white dark:bg-surface-dark shadow-sm border border-surface-borderLight dark:border-surface-border rounded-xl overflow-hidden mt-9"
       >
         <table class="w-full text-left border-collapse">
           <thead class="">
             <tr
-              class="bg-slate-50 border-b border-slate-200 text-slate-500 text-sm font-semibold"
+              class="bg-surface-subtle dark:bg-surface-authBg border-b border-surface-borderLight dark:border-surface-border text-ink-secondary dark:text-ink-mutedDark text-sm font-semibold"
             >
               <th class="px-3 py-3 font-semibold hidden">ID</th>
               <th class="py-3 font-semibold hidden sm:table-cell">Data</th>
@@ -193,19 +207,19 @@ function excluirSolicitacao(solicitacao) {
               :key="solicitacao.id"
               class="shadow"
             >
-              <td class="font-semibold text-black px-3">
+              <td class="font-semibold text-black dark:text-white px-3">
                 {{ solicitacao.id }}
               </td>
-              <td class="text-slate-500 hidden sm:table-cell">
+              <td class="text-ink-secondary dark:text-ink-mutedDark hidden sm:table-cell">
                 {{ solicitacao.data }}
               </td>
-              <td class="font-semibold text-black hidden sm:table-cell">
+              <td class="font-semibold text-black dark:text-white hidden sm:table-cell">
                 {{ solicitacao.solicitante }}
               </td>
-              <td class="font-semibold text-black hidden sm:table-cell">
+              <td class="font-semibold text-black dark:text-white hidden sm:table-cell">
                 {{ solicitacao.tipoServico }}
               </td>
-              <td class="text-slate-500 w-24 sm:w-auto">
+              <td class="text-ink-secondary dark:text-ink-mutedDark w-24 sm:w-auto">
                 {{ solicitacao.prazo }}
               </td>
               <td class="p-2">
@@ -219,14 +233,12 @@ function excluirSolicitacao(solicitacao) {
               <td class="p-2">
                 <a @click="abrirServico(solicitacao)"
                   ><i
-                    class="fa-solid fa-pen-to-square cursor-pointer fa-[20px]"
-                    style="color: #1d242f"
+                    class="fa-solid fa-pen-to-square cursor-pointer fa-[20px] text-surface-dark dark:text-white"
                   ></i
                 ></a>
                 <a @click="excluirSolicitacao(solicitacao)"
                   ><i
-                    class="fa-solid fa-trash-can cursor-pointer fa-[20px]"
-                    style="color: #1d242f"
+                    class="fa-solid fa-trash-can cursor-pointer fa-[20px] text-surface-dark dark:text-white"
                   ></i
                 ></a>
               </td>
@@ -248,9 +260,16 @@ function excluirSolicitacao(solicitacao) {
         @close="fecharServico"
         @submit="salvarServico"
       />
+
+      <ExcluirSolicitacaoModal
+        :open="excluirModalAberto"
+        :solicitacao="solicitacaoParaExcluir"
+        @close="fecharExclusao"
+        @confirm="confirmarExclusao"
+      />
     </main>
     <footer>
-      <div class="bg-[#1D242F] p-5"></div>
+      <div class="bg-surface-dark p-5"></div>
     </footer>
   </div>
 </template>

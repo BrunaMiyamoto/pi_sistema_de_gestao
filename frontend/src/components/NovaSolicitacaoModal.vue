@@ -48,26 +48,26 @@ function enviarForm() {
 <template>
   <div
     v-if="open"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-overlay/45 backdrop-blur-sm p-4"
     @click="onBackdropClick"
   >
     <div
       class="rounded-xl shadow-2xl w-full max-w-xl overflow-hidden flex flex-col mx-auto"
     >
-      <div class="bg-[#1D242F] text-white flex justify-between px-4 py-1">
+      <div class="bg-surface-dark text-white flex justify-between px-4 py-1">
         <div class="flex items-center">
-          <div class="bg-[#E19047] p-0.5 rounded-sm m-2">
+          <div class="bg-brand-mint p-0.5 rounded-sm m-2">
             <i class="fa-solid fa-gear" style="color: rgb(30, 48, 80)"></i>
           </div>
           <p class="font-bold">Jacto</p>
-          <p class="text-[#E19047] font-bold">Flow</p>
+          <p class="text-brand-turquoise font-bold">Flow</p>
         </div>
         <span class="py-3 cursor-pointer" @click="fecharModal"
           ><i class="fa-solid fa-circle-xmark" style="color: #ffffff"></i
         ></span>
       </div>
       <div class="shadow p-6 bg-white">
-        <h1 class="font-bold text-xl py-4">+ Nova Solicitação Técnica</h1>
+        <h1 class="font-bold text-xl py-4">+ Nova Solicitação</h1>
 
         <form @submit.prevent="enviarForm">
           <div class="flex flex-col">
@@ -78,7 +78,7 @@ function enviarForm() {
               class="border border-slate-300 rounded-sm p-1 my-2"
             >
               <option value="">Selecione..</option>
-              <option value="molde-injecao">Molde dde Injeção</option>
+              <option value="molde-injecao">Molde de Injeção</option>
             </select>
           </div>
 
@@ -120,9 +120,9 @@ function enviarForm() {
           <div>
             <button
               type="submit"
-              class="bg-[#F29949] font-bold text-center w-full rounded-lg py-1 my-2 cursor-pointer"
+              class="bg-brand-mint hover:bg-brand-turquoise text-white font-bold text-center w-full rounded-lg py-1 my-2 cursor-pointer"
             >
-              Registrar Demanda
+              REGISTRAR
             </button>
           </div>
         </form>
