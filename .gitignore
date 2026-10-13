@@ -216,7 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
-<<<<<<< HEAD
 
 # Banco de dados local
 database.db
+
+# Node / Vite (frontend)
+node_modules/
+frontend/dist/
+*.local

@@ -1,27 +1,23 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Projeto intergrador desenvolvido para o eixo de computação da Univesp.Desenvolvimento de Sistema Web para Gestão de Solicitações e Pedidos Industriais"
-    />
-    <meta
-      name="author"
-      content="Alexandre Tetsuo Eto, Amanda Vitória Rosa, Bruna Yukari Kuwabara Miyamoto,Gicélio Alves Correia,Ingrid Aparecida Aquino Soares e Ygor Martins Godoi"
-    />
-    <title>Login</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body class="bg-[#111826] min-h-screen flex items-center justify-center p-4">
+<script setup>
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const form = reactive({
+  email: "",
+  senha: "",
+});
+
+function entrar() {
+  router.push("/dashboard");
+}
+</script>
+
+<template>
+  <div
+    class="bg-[#111826] min-h-screen flex items-center justify-center p-4"
+  >
     <main class="mx-auto my-auto px-4 py-8 w-full max-w-sm">
       <section class="bg-[#1D242F] rounded-xl m-4 p-8">
         <div class="flex items-center py-4 justify-center">
@@ -38,10 +34,11 @@
           </p>
         </div>
 
-        <form>
+        <form @submit.prevent="entrar">
           <div class="flex flex-col py-4">
             <label class="text-white font-semibold pb-2">E-mail</label>
             <input
+              v-model="form.email"
               type="email"
               name="email"
               id="email"
@@ -53,6 +50,7 @@
           <div class="flex flex-col py-1">
             <label class="text-white font-semibold pb-2">Senha</label>
             <input
+              v-model="form.senha"
               type="password"
               name="senha"
               id="senha"
@@ -67,15 +65,15 @@
             <a>Esqueceu sua senha?</a>
           </div>
 
-          <a
-            href="dashboard.html"
+          <button
+            type="submit"
             class="inline-block text-center bg-[#E19047] font-bold py-1.5 w-full rounded-lg cursor-pointer mt-4 hover:bg-[#F29949] hover:text-slate-700"
           >
             Entrar no Sistema
-          </a>
+          </button>
         </form>
       </section>
     </main>
     <footer></footer>
-  </body>
-</html>
+  </div>
+</template>
