@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-border-dark: #374151;
+  --color-border-light: #e5e7eb;
+  --color-ink-secondary: #6b7280;
+  --color-ink-muted-dark: #9ca3af;
+  --a11y-font-scale: 1;
+}
+
+/*
+ * --color-border-dark e --color-ink-muted-dark são usados em superfícies
+ * escuras (header, telas de login/cadastro, cards no modo escuro), enquanto
+ * --color-border-light e --color-ink-secondary são usados em superfícies
+ * claras (dashboard no modo claro, modais, painel de acessibilidade).
+ * O alto contraste deve reforçar cada par pela superfície onde aparece, e
+ * não pelo esquema de cores (claro/escuro) escolhido no painel.
+ */
+.high-contrast {
+  --color-border-dark: #ffffff;
+  --color-border-light: #000000;
+  --color-ink-secondary: #000000;
+  --color-ink-muted-dark: #ffffff;
+}
+
+html {
+  font-size: calc(16px * var(--a11y-font-scale, 1));
+}
